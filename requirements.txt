@@ -1,0 +1,17 @@
+#  Main
+torch
+numpy
+tqdm
+pickle5
+scipy
+matplotlib
+scikit-rf
+wandb 
+rich
+six
+
+# App
+streamlit
+
+# Testing
+pytest
