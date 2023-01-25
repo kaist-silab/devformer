@@ -3,6 +3,7 @@ import time
 import argparse
 import torch
 
+
 def get_options(args=None):
     parser = argparse.ArgumentParser(
         description="Attention based model for solving the Travelling Salesman Problem with Reinforcement Learning"
@@ -240,7 +241,6 @@ def get_options(args=None):
     parser.add_argument(
         "--wandb", action="store_true", help="Enable wandb logging", default=True
     )
-    
 
     opts = parser.parse_args(args)
 

@@ -4,6 +4,7 @@ import zipfile
 
 from src.utils.downloader import download_url
 
+
 def check_extension(filename):
     if os.path.splitext(filename)[1] != ".pkl":
         return filename + ".pkl"
@@ -27,11 +28,12 @@ def load_dataset(filename):
         return pickle.load(f)
 
 
-def download_data(url="https://drive.google.com/uc?id=1cANSJRW7STCl_7cWacDajWMXcEUQG1SK",
-                 md5="378339c8bf144e48d57db1121b46ccfe",
+def download_data(
+    url="https://drive.google.com/uc?id=1cANSJRW7STCl_7cWacDajWMXcEUQG1SK",
+    md5="378339c8bf144e48d57db1121b46ccfe",
 ):
     """Download data from Google Drive and unzip it in data/ directory."""
-    download_url(url, ".", md5=md5, filename="data.zip")   
+    download_url(url, ".", md5=md5, filename="data.zip")
     print("Extracting data.zip...")
     with zipfile.ZipFile("data.zip", "r") as zip_ref:
         zip_ref.extractall(".")

@@ -402,9 +402,7 @@ class DevFormer(nn.Module):
             self._make_heads(glimpse_val_fixed, num_steps),
             logit_key_fixed.contiguous(),
         )
-        return DevFormerFixed(
-            embeddings, prob_context, *fixed_attention_node_data
-        )
+        return DevFormerFixed(embeddings, prob_context, *fixed_attention_node_data)
 
     def _get_log_p_topk(self, fixed, state, k=None, normalize=True):
         log_p, _ = self._get_log_p(fixed, state, normalize=normalize)
