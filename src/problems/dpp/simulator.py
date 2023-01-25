@@ -4,6 +4,7 @@ from numpy.linalg import inv
 
 DEFAULT_DIR = "data/dpp/simulator/"
 
+
 def decap_placement(
     n,
     m,
@@ -11,7 +12,7 @@ def decap_placement(
     pi,
     probing_port,
     freq_pts,
-    fpath= DEFAULT_DIR+"01nF_decap.npy",
+    fpath=DEFAULT_DIR + "01nF_decap.npy",
 ):
     num_decap = np.size(pi)
     probe = probing_port
@@ -53,9 +54,7 @@ def decap_placement(
     return zout
 
 
-def decap_model(
-    z_initial, z_final, N_freq, fpath=DEFAULT_DIR+"freq_201.npy"
-):
+def decap_model(z_initial, z_final, N_freq, fpath=DEFAULT_DIR + "freq_201.npy"):
 
     impedance_gap = np.zeros(N_freq)
 
@@ -83,7 +82,7 @@ def decap_sim(
     keepout=None,
     N=10,
     N_freq=201,
-    fpath=DEFAULT_DIR+"10x10_pkg_chip.npy",
+    fpath=DEFAULT_DIR + "10x10_pkg_chip.npy",
 ):
 
     with open(fpath, "rb") as f:

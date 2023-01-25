@@ -21,13 +21,13 @@ logger = logging.getLogger(__name__)
 
 
 def download_url(
-    url: str, 
-    root: str, 
-    filename: Optional[str] = None, 
+    url: str,
+    root: str,
+    filename: Optional[str] = None,
     session: requests.Session = requests.Session(),
     key: Optional[str] = None,
     proxy: str = None,
-    md5: Optional[str] = None, 
+    md5: Optional[str] = None,
     max_redirect_hops: int = 3,
     verify: Optional[bool] = None,
     timeout: int = 60,
@@ -37,7 +37,7 @@ def download_url(
     show_progress: bool = True,
     logging_level: int = logging.INFO,
 ) -> None:
-    """Download a file from a url and place it in root. Supports robust downloads with resuming, 
+    """Download a file from a url and place it in root. Supports robust downloads with resuming,
     connection error handling, proxies, authentication, and more.
 
     Args:
@@ -92,7 +92,7 @@ def download_url(
     if md5 is not None and check_integrity(fpath, md5):
         logger.info("Using downloaded and verified file: " + fpath)
         return
-        
+
     # Get file size
     try:
         downloaded = os.path.getsize(fpath)
@@ -107,7 +107,7 @@ def download_url(
 
     logger.info("Downloading %s to %s (%s)", url, filename, format_bytes(size))
 
-    mode = "ab" # append to file if it exists
+    mode = "ab"  # append to file if it exists
     sleep = 10
     tries = 0
     headers = {"Range": "bytes=%d-" % downloaded, "User-Agent": USER_AGENT}
@@ -149,7 +149,8 @@ def download_url(
             break
 
         logger.error(
-            "Download incomplete, downloaded %s / %s" % (format_bytes(downloaded), format_bytes(size))
+            "Download incomplete, downloaded %s / %s"
+            % (format_bytes(downloaded), format_bytes(size))
         )
         logger.warning("Sleeping %s seconds" % (sleep,))
         time.sleep(sleep)
@@ -165,7 +166,8 @@ def download_url(
 
     if downloaded != size:
         raise Exception(
-            "Download failed: downloaded %s / %s" % (format_bytes(downloaded), format_bytes(size))
+            "Download failed: downloaded %s / %s"
+            % (format_bytes(downloaded), format_bytes(size))
         )
 
     if md5 is not None:
@@ -266,9 +268,11 @@ def _parse_gdrive_url(url, warning=True):
             )
         )
 
-
-        
-    return "https://drive.google.com/uc?id={id}".format(id=file_id), file_id, is_download_link
+    return (
+        "https://drive.google.com/uc?id={id}".format(id=file_id),
+        file_id,
+        is_download_link,
+    )
 
 
 def get_url_from_gdrive_confirmation(contents):
@@ -318,9 +322,13 @@ def get_url_filename_drive(url, sess, verify):
     while True:
 
         try:
-            res = sess.get(url, headers={"User-Agent": USER_AGENT}, stream=True, verify=verify)
+            res = sess.get(
+                url, headers={"User-Agent": USER_AGENT}, stream=True, verify=verify
+            )
         except requests.exceptions.ProxyError as e:
-            logger.error("An error has occurred using proxy:", sess.proxy, file=sys.stderr)
+            logger.error(
+                "An error has occurred using proxy:", sess.proxy, file=sys.stderr
+            )
             logger.error(e, file=sys.stderr)
             return None, None
 
@@ -357,7 +365,6 @@ def get_url_filename_drive(url, sess, verify):
 
     return url, filename_from_url
 
-        
 
 def calculate_md5(fpath: str, chunk_size: int = 1024 * 1024) -> str:
     # Setting the `usedforsecurity` flag does not change anything about the functionality, but indicates that we are
@@ -378,7 +385,9 @@ def _get_redirect_url(url: str, max_hops: int = 3) -> str:
     headers = {"Method": "HEAD", "User-Agent": USER_AGENT}
 
     for _ in range(max_hops + 1):
-        with urllib.request.urlopen(urllib.request.Request(url, headers=headers)) as response:
+        with urllib.request.urlopen(
+            urllib.request.Request(url, headers=headers)
+        ) as response:
             if response.url == url or response.url is None:
                 return url
 
