@@ -81,9 +81,9 @@ def download_url(
             filename = content_disposition.split(";")[-1]
         else:
             filename = os.path.basename(urllib.parse.urlparse(response.url).path)
-    elif not filename and url_drive:
-        filename = filename_drive
+    elif url_drive:
         url = url_drive
+        filename = filename_drive if not filename else filename
 
     fpath = os.path.join(root, filename)
     os.makedirs(root, exist_ok=True)
