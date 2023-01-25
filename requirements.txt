@@ -9,6 +9,7 @@ scikit-rf
 wandb 
 rich
 six
+zipfile
 
 # App
 streamlit
