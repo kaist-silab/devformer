@@ -12,10 +12,15 @@ from src.reinforce_baselines import CriticBaseline, RolloutBaseline, NoBaseline
 from src.models.attention_model import AttentionModel
 from src.models.devformer import DevFormer
 from src.utils import torch_load_cpu, load_problem
-
+from src.utils.data_utils import check_data_is_downloaded, download_data
 
 
 def run(opts):
+
+    # Check if data is downloaded and download if not
+    is_downloaded = check_data_is_downloaded()
+    if not is_downloaded:
+        download_data()
 
     # Pretty print the run args
     pprint(vars(opts))
