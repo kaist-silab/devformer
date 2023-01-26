@@ -10,8 +10,11 @@ for (let i = 0; i < elements.length; i++) {
 }
 
 container = found[found.length-1];
-container.style.backgroundImage =  "url($URL)";
+// container.style.backgroundImage =  "url($URL)";
+// set background as grey
+container.style.backgroundColor = "$BACKGROUND_COLOR";
 container.style.opacity = "$OPACITY";
+
 
 
 function changeButtonStyle(button) {
