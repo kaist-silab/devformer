@@ -68,7 +68,7 @@ col1.download_button(
     file_name="download_anonymous_github.py",
 )
 
-if col2.button('Code from Anonymous Github ↗️', key="download", type="secondary"):
+if col2.button("Code from Anonymous Github ↗️", key="download", type="secondary"):
     webbrowser.open_new_tab("https://anonymous.4open.science/r/DPPBench")
 
 # Divider
