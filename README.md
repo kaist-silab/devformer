@@ -57,6 +57,7 @@ Additionally, the folder [scripts/](scripts/) contains scripts to reproduce the 
 
 --- 
 <center>
+
 ## DPP Simulator GUI
 <p align="center">
     <img src="pages/assets/catchy.png" width="500"/>
