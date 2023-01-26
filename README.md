@@ -1,43 +1,67 @@
+<center>
+
 # DPP Benchmark
-![example workflow](https://github.com/alstn12088/DPP_benchmark/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-This repo is for decap placement problem (DPP) benchmark. 
+![example workflow](https://github.com/alstn12088/DPP_benchmark/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/) (TODO)
 
 
-* How to Run Simulator
+</center>
+
+This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement". The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
+
+
+## Setup
 
 ```bash
-from simulator.decap_sim import decap_sim
+# Clone the repository and cd into it
+git clone https://github.com/kaist-silab/DPP_benchmark.git && cd DPP_benchmark
+
+# Automatically install dependencies with light the torch
+pip install light-the-torch && python3 -m light_the_torch install --upgrade -r requirements.txt
+```
+The above script will [automatically install](https://github.com/pmeier/light-the-torch) PyTorch with the right GPU version for your system. Alternatively, you can use `pip install -r requirements.txt` 
+
+## Usage
+### Simulator
+* Using the simulator to obtain the cost of a solution:
+
+```bash
+from src.problems.dpp.simulator import decap_sim
 
 cost = decap_sim(probe = 23, solution = [1,5,7], keep_out = [2,3,10])
 ```
+### Run and evaluate models
 
-* How to benchmark baselines
+In general, the following command is used to run the models:
+```bash
+python3 run.py --problem [PROBLEM] --model [MODEL] --training_dataset [DATASET]
+```
+You may also have a look at the arguments under [src/options.py](src/options.py) for more details.
+
+* How to evaluate pretrained DevFormer
 
 ```bash
-python benchmark.py --baseline [BASELINE NAME]
+python3 run.py --problem dpp --model devformer --resume data/dpp/pretrained/CSE_2000_epoch-50.pt --eval_only
 ```
-
-* How to Evalutate pretrained CSE
-
+  
+* How to train DevFormer
+  
 ```bash
-python benchmark.py --baseline CSE
+python3 run.py --problem dpp --model devformer --N_aug 4 --training_mode IL --train_dataset data/dpp/training_2000_new.pkl --guiding_action data/dpp/guiding_2000_new.pkl --EE --SE --batch_size 200
 ```
 
-* How to train CSE
+Additionally, the folder [scripts/](scripts/) contains scripts to reproduce the results in the paper.
 
-```bash
-cd baselines/CSE/
+### Troubleshooting
+- There may be problems on multiple GPUs due to the current handling of DataParallel. You may run `export CUDA_VISIBLE_DEVICES=0` to use only one GPU.
+- When running the `run.py` script, if data has not been download it will start downloading automatically. If you want to download the data manually, or if there are any issues with Google Drive, you may access the data at the [following link](https://drive.google.com/file/d/1cANSJRW7STCl_7cWacDajWMXcEUQG1SK/view) and place extract the content of the `.zip` archive at this repository root `.`.
 
-python train.py --num_data 1000 --num_augment 3
-```
-
-
+--- 
+<center>
 ## DPP Simulator GUI
-
 <p align="center">
     <img src="pages/assets/catchy.png" width="500"/>
 </p> 
+
 
 The application is based on [Streamlit](https://streamlit.io/) which allows for web GUIs in Python. To run the application locally, run the following command:
 
