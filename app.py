@@ -27,7 +27,6 @@ BUTTON_SCALE = 1.2
 MIN_WIDTH = 800
 
 
-
 st.set_page_config(page_title=APP_NAME, page_icon=":zap:")
 st.title(f"Decoupling Capacitor Placement")
 
