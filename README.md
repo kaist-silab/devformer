@@ -1,7 +1,7 @@
 <center>
 
 # DPP Benchmark
-![example workflow](https://github.com/alstn12088/DPP_benchmark/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/) (TODO)
+![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/) (TODO)
 
 
 </center>
@@ -57,6 +57,7 @@ Additionally, the folder [scripts/](scripts/) contains scripts to reproduce the 
 
 --- 
 <center>
+
 ## DPP Simulator GUI
 <p align="center">
     <img src="pages/assets/catchy.png" width="500"/>
