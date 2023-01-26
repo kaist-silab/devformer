@@ -1,7 +1,9 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import webbrowser
 
 from src.problems.dpp.simulator import decap_sim
+from download_anonymous_github import download_repo
 
 
 APP_NAME = "DPP Benchmark"
@@ -42,6 +44,35 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown("---")
+
+# Title
+st.markdown(
+    f"""
+    To download from Anonymous Github automatically, click on "Downloader Script" and run:
+    `python3 download_anonymous_github.py`
+    in the terminal. This will download the repository to the current directory.
+    """
+)
+
+col1, col2 = st.columns([1, 1])
+
+
+# Download button for anonymous github
+with open("download_anonymous_github.py", "r") as f:
+    download_script = f.read()
+
+col1.download_button(
+    label="Downloader Script ⬇️",
+    data=download_script,
+    file_name="download_anonymous_github.py",
+)
+
+if col2.button('Code from Anonymous Github ↗️', key="download", type="secondary"):
+    webbrowser.open_new_tab("https://anonymous.4open.science/r/DPPBench")
+
+# Divider
+st.markdown("---")
 
 # Initialization
 if "buttons" not in st.session_state:

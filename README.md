@@ -1,10 +1,11 @@
-<center>
-
 # DPP Benchmark
-![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/) (TODO)
+![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dppbench.streamlit.app/)
 
 
-</center>
+> To download from Anonymous Github automatically, download [download_anonymous_github.py](download_anonymous_github.py) and run:
+>  `python3 download_anonymous_github.py`
+> in the terminal. This will download the repository to the current directory.
+
 
 This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement". The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
 
@@ -56,7 +57,6 @@ Additionally, the folder [scripts/](scripts/) contains scripts to reproduce the 
 - When running the `run.py` script, if data has not been download it will start downloading automatically. If you want to download the data manually, or if there are any issues with Google Drive, you may access the data at the [following link](https://drive.google.com/file/d/1cANSJRW7STCl_7cWacDajWMXcEUQG1SK/view) and place extract the content of the `.zip` archive at this repository root `.`.
 
 --- 
-<center>
 
 ## DPP Simulator GUI
 <p align="center">
