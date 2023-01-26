@@ -53,7 +53,7 @@ def run(opts):
 
     # Initialize model
     model_class = {
-        "device_transformer": DevFormer,
+        "devformer": DevFormer,
         "attention": AttentionModel,
     }.get(opts.model, None)
     assert model_class is not None, "Unknown model: {}".format(model_class)
@@ -151,8 +151,7 @@ def run(opts):
 
     if opts.eval_only:
         model.eval()
-        _, cost = validate(model, val_dataset, opts)
-        print(cost)
+        cost = validate(model, val_dataset, opts)
 
     else:
         for epoch in range(opts.epoch_start, opts.epoch_start + opts.n_epochs):
