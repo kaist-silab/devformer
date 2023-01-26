@@ -19,12 +19,30 @@ states_dict = {
     "KEEPOUT": {"text": "✖️", "color": "black"},
 }
 
+# NOTE: replaced with grey background for now, way faster
 IMAGE = "https://media.istockphoto.com/id/899824734/vector/digital-circuit-background-texture-of-processor-motherboard.jpg?s=612x612&w=0&k=20&c=25oCxPTkika0jny7LvfOWGCGsDjNV8zKcruHk-Mf9rU="
+BACKGROUND_COLOR = "#808080"
 OPACITY = 0.8
 BUTTON_SCALE = 1.2
+MIN_WIDTH = 800
+
+
 
 st.set_page_config(page_title=APP_NAME, page_icon=":zap:")
 st.title(f"Decoupling Capacitor Placement")
+
+# Add permanent notice
+st.markdown(
+    """
+    <div style="background-color:#f8f8f8; border-radius: 5px;">
+    <p>
+    <b>Note</b>: we recommend using the following website in desktop mode - it is not optimized for mobile devices; the layout might be broken in the mobile version.
+    </p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 # Initialization
 if "buttons" not in st.session_state:
@@ -235,7 +253,9 @@ replace_dict = {
     "ELEM_NUM": str(N_COLS * N_ROWS - 1),
     "URL": IMAGE,
     "BUTTON_SCALE": str(BUTTON_SCALE),
+    "BACKGROUND_COLOR": BACKGROUND_COLOR,
     "OPACITY": str(OPACITY),
+    "MIN_WIDTH": str(MIN_WIDTH),
 }
 
 # Load Javascript
