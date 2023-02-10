@@ -1,6 +1,9 @@
-# DPP Benchmark
-![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dppbench.streamlit.app/)
+<div align="center">
 
+# DPP Benchmark
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_red.svg)](https://dppbench.streamlit.app/)![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)
+
+</div>
 
 This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement". The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
 
