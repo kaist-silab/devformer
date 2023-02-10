@@ -91,3 +91,16 @@ Most radical modifications are not supported in Streamlit, so we hack our way an
 
 ### Deploy the app
 There are many ways to deploy the app, among which on our own server. However, Streamlit provides a [free hosting service](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app) that is sufficient for our purposes. To deploy the app, simply follow the instructions there or click the "deploy" button after running the app locally!
+
+---
+### Cite us
+
+If you find this repository useful, please consider citing our paper:
+
+```
+@article{kim2023devformer,
+  title={DevFormer: A Symmetric Transformer for Context-Aware Device Placement},
+  author={Kim, Haeyeon and Kim, Minsu and Berto, Federico and Kim, Joungho and Park, Jinkyoo},
+  year={2023},
+}
+```

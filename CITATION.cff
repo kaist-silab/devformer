@@ -1,0 +1,15 @@
+date-released: 2023-02
+title: "DevFormer: A Symmetric Transformer for Context-Aware Device Placement"
+message: "If you use this software, please cite it using the metadata from this file."
+url: "https://github.com/kaist-silab/DPPBench"
+authors:
+- family-names: Kim
+  given-names: Haeyeon
+- family-names: Kim
+  given-names: Minsu
+- family-names: Berto
+  given-names: Federico
+- family-names: Kim
+  given-names: Joungho
+- family-names: Park
+  given-names: Jinkyoo
