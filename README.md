@@ -3,19 +3,16 @@
 # DPP Benchmark
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_red.svg)](https://dppbench.streamlit.app/)![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)
 
+<p align="center">
+    <img src="pages/assets/objective.png" width="500"/>
+</p> 
+
 </div>
 
 This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement". The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
 
 
 ## Setup
-
-### Clone repository
-First, download the [repository on Anonymous Github](https://anonymous.4open.science/r/DPPBench) by running this on a terminal:
-```bash
-curl -sSL https://anonymous.4open.science/r/DPPBench/download_anonymous_github.py | python3 -
-```
-or use the [downloader script](https://anonymous.4open.science/r/DPPBench/download_anonymous_github.py)  and run it with your favorite Python interpreter. Note that we use the above since Anonymous Github is currently not providing a way to download the repository as a zip file.
 
 ### Install dependencies
 ```bash
