@@ -55,7 +55,6 @@ def solve_gurobi(directory, name, loc, disable_cache=False, timeout=None, gap=No
 
 
 def solve_concorde_log(executable, directory, name, loc, disable_cache=False):
-
     problem_filename = os.path.join(directory, "{}.tsp".format(name))
     tour_filename = os.path.join(directory, "{}.tour".format(name))
     output_filename = os.path.join(directory, "{}.concorde.pkl".format(name))
@@ -104,7 +103,6 @@ def solve_concorde_log(executable, directory, name, loc, disable_cache=False):
 
 
 def solve_lkh_log(executable, directory, name, loc, runs=1, disable_cache=False):
-
     problem_filename = os.path.join(directory, "{}.lkh{}.vrp".format(name, runs))
     tour_filename = os.path.join(directory, "{}.lkh{}.tour".format(name, runs))
     output_filename = os.path.join(directory, "{}.lkh{}.pkl".format(name, runs))
@@ -158,7 +156,6 @@ def write_lkh_par(filename, parameters):
 
 
 def write_tsplib(filename, loc, name="problem"):
-
     with open(filename, "w") as f:
         f.write(
             "\n".join(
@@ -389,7 +386,6 @@ def solve_all_nn(
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "method",
@@ -426,7 +422,6 @@ if __name__ == "__main__":
     ), "Cannot specify result filename with more than one dataset"
 
     for dataset_path in opts.datasets:
-
         assert os.path.isfile(check_extension(dataset_path)), "File does not exist!"
 
         dataset_basename, ext = os.path.splitext(os.path.split(dataset_path)[-1])
@@ -473,7 +468,6 @@ if __name__ == "__main__":
             method in ("gurobi", "gurobigap", "gurobit", "concorde", "lkh")
             or method[-9:] == "insertion"
         ):
-
             target_dir = os.path.join(
                 results_dir, "{}-{}".format(dataset_basename, opts.method)
             )

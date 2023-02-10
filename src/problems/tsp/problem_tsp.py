@@ -8,7 +8,6 @@ from src.utils.beam_search import beam_search
 
 
 class TSP(object):
-
     NAME = "tsp"
 
     @staticmethod
@@ -44,7 +43,6 @@ class TSP(object):
         model=None,
         max_calc_batch_size=4096,
     ):
-
         assert model is not None, "Provide model"
 
         fixed = model.precompute_fixed(input)

@@ -9,7 +9,6 @@ from src.problems.dpp.reward_function_serial import reward_gen
 
 
 class Decap(object):
-
     NAME = "dpp"
 
     @staticmethod

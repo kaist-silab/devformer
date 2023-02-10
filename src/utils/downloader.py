@@ -114,7 +114,6 @@ def download_url(
 
     # Main loop: download the file in chunks with retries and resume on failure
     while tries < retry_max:
-
         r = robust_wrapper(session.get, retry_max, sleep_max)(
             url,
             stream=True,
@@ -179,7 +178,6 @@ def download_url(
 
 def robust_wrapper(call, retry_max=500, sleep_max=120):
     def retriable(code, reason):
-
         if code in [
             requests.codes.internal_server_error,
             requests.codes.bad_gateway,
@@ -320,7 +318,6 @@ def get_url_filename_drive(url, sess, verify):
     url, gdrive_file_id, is_gdrive_download_link = _parse_gdrive_url(url)
 
     while True:
-
         try:
             res = sess.get(
                 url, headers={"User-Agent": USER_AGENT}, stream=True, verify=verify

@@ -185,7 +185,6 @@ def sample_many(inner_func, get_cost_func, input, batch_rep=1, iter_rep=1):
     probing = input[0][:, :, 2] == 2
     keep_out = input[0][:, :, 2] == 1
     for i in range(iter_rep):
-
         _log_p, pi, _ = inner_func(
             input[1].view(100, input[0].shape[0], -1), None, probing, keep_out
         )
