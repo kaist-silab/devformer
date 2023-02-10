@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import webbrowser
 
 from src.problems.dpp.simulator import decap_sim
-from download_anonymous_github import download_repo
+from utils.download_anonymous_github import download_repo
 
 
 APP_NAME = "DPP Benchmark"
