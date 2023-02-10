@@ -88,6 +88,7 @@ if "maximum_score_decap" not in st.session_state:
 ## Functions
 ############################
 
+
 # make any grid with a function
 def make_grid(cols, rows, padding_x=PADDING_X, padding_y=PADDING_Y):
     cols_ = cols + 2 * padding_x

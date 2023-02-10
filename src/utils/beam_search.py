@@ -29,7 +29,6 @@ def get_beam_search_results(beams, final_state):
 
 
 def _beam_search(state, beam_size, propose_expansions=None, keep_states=False):
-
     beam = BatchBeam.initialize(state)
 
     # Initial state
@@ -37,7 +36,6 @@ def _beam_search(state, beam_size, propose_expansions=None, keep_states=False):
 
     # Perform decoding steps
     while not beam.all_finished():
-
         # Use the model to propose and score expansions
         parent, action, score = (
             beam.propose_expansions()
@@ -202,7 +200,6 @@ def segment_topk_idx(x, k, ids):
 
 
 def backtrack(parents, actions):
-
     # Now backtrack to find aligned action sequences in reversed order
     cur_parent = parents[-1]
     reversed_aligned_sequences = [actions[-1]]

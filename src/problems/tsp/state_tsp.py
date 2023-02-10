@@ -56,7 +56,6 @@ class StateTSP:
 
     @staticmethod
     def initialize(loc, visited_dtype=torch.uint8):
-
         batch_size, n_loc, _ = loc.size()
         prev_a = torch.zeros(batch_size, 1, dtype=torch.long, device=loc.device)
         return StateTSP(
@@ -87,7 +86,6 @@ class StateTSP:
         )
 
     def get_final_cost(self):
-
         assert self.all_finished()
         # assert self.visited_.
 
@@ -96,7 +94,6 @@ class StateTSP:
         ).norm(p=2, dim=-1)
 
     def update(self, selected):
-
         # Update the state
         prev_a = selected[:, None]  # Add dimension for step
 

@@ -150,7 +150,6 @@ class DevFormer(nn.Module):
             self.temp = temp
 
     def PPE(self, input):
-
         coordinates = input[:, :, :-1]
         probing = input[self.probing].unsqueeze(1)
         probing_coord = probing[:, :, :-1]
@@ -183,7 +182,6 @@ class DevFormer(nn.Module):
         _log_p, pi = self._inner(input, embeddings, action)
 
         if action == None:
-
             if return_pi:
                 cost = 0
                 ll = self._calc_log_likelihood(_log_p, pi, None)
@@ -257,7 +255,6 @@ class DevFormer(nn.Module):
         return flat_parent[feas_ind], flat_action[feas_ind], flat_score[feas_ind]
 
     def _calc_log_likelihood(self, _log_p, a, mask):
-
         # Get log_p corresponding to selected actions
         log_p = _log_p.gather(2, a.unsqueeze(-1)).squeeze(-1)
 
@@ -273,11 +270,9 @@ class DevFormer(nn.Module):
         return log_p.sum(1)
 
     def _init_embed(self, input):
-
         return self.init_embed(input)
 
     def _inner(self, input, embeddings, action=None, probing=None, keep_out=None):
-
         # in the case that only inner is called by eval.py function
         #######################################
         if probing is not None:
@@ -299,7 +294,6 @@ class DevFormer(nn.Module):
         # Perform decoding steps
         i = 0
         for i in range(self.num_decap):
-
             log_p, mask = self._get_log_p(
                 fixed, state, probing=self.probing, keep_out=self.keep_out
             )
@@ -308,7 +302,6 @@ class DevFormer(nn.Module):
             if action == None:
                 selected = self._select_node(log_p.exp()[:, 0, :], mask[:, 0, :])
             else:
-
                 selected = action[:, i]
 
             state = state.update(selected)
@@ -352,7 +345,6 @@ class DevFormer(nn.Module):
         )
 
     def _select_node(self, probs, mask):
-
         assert (probs == probs).all(), "Probs should not contain any nans"
 
         if self.decode_type == "greedy":
@@ -375,7 +367,6 @@ class DevFormer(nn.Module):
         return selected
 
     def _precompute(self, embeddings, num_steps=1):
-
         # The fixed context projection of the graph embedding is calculated only once for efficiency
         graph_embed = embeddings.mean(1)
         batch_size = graph_embed.shape[0]
@@ -420,7 +411,6 @@ class DevFormer(nn.Module):
         )
 
     def _get_log_p(self, fixed, state, probing=None, keep_out=None, normalize=True):
-
         # Compute query = context node embedding
         query = fixed.context_node_projected + self.project_step_MLP(
             self._get_parallel_step_context(fixed.node_embeddings, state)
@@ -473,14 +463,12 @@ class DevFormer(nn.Module):
                     batch_size, 1, self.W_placeholder.size(-1)
                 )
             else:
-
                 return embeddings.gather(
                     1,
                     current_node[:, :, None].expand(batch_size, 1, embeddings.size(-1)),
                 ).view(batch_size, 1, -1)
 
     def _one_to_many_logits(self, query, glimpse_K, glimpse_V, logit_K, mask):
-
         batch_size, num_steps, embed_dim = query.size()
         key_size = val_size = embed_dim // self.n_heads
 
@@ -527,7 +515,6 @@ class DevFormer(nn.Module):
         return logits, glimpse.squeeze(-2)
 
     def _get_attention_node_data(self, fixed, state):
-
         return fixed.glimpse_key, fixed.glimpse_val, fixed.logit_key
 
     def _make_heads(self, v, num_steps=None):

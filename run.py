@@ -16,7 +16,6 @@ from src.utils.data_utils import check_data_is_downloaded, download_data
 
 
 def run(opts):
-
     # Check if data is downloaded and download if not
     is_downloaded = check_data_is_downloaded()
     if not is_downloaded:
@@ -82,7 +81,6 @@ def run(opts):
     # Initialize baseline
 
     if opts.baseline == "critic" or opts.baseline == "critic_lstm":
-
         baseline = CriticBaseline(
             (
                 CriticNetwork(

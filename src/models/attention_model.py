@@ -151,7 +151,6 @@ class AttentionModel(nn.Module):
         _log_p, pi = self._inner(input, embeddings, action)
 
         if action == None:
-
             if return_pi:
                 cost = 0
                 ll = self._calc_log_likelihood(_log_p, pi, None)
@@ -221,7 +220,6 @@ class AttentionModel(nn.Module):
         return flat_parent[feas_ind], flat_action[feas_ind], flat_score[feas_ind]
 
     def _calc_log_likelihood(self, _log_p, a, mask):
-
         # Get log_p corresponding to selected actions
         log_p = _log_p.gather(2, a.unsqueeze(-1)).squeeze(-1)
 
@@ -237,11 +235,9 @@ class AttentionModel(nn.Module):
         return log_p.sum(1)
 
     def _init_embed(self, input):
-
         return self.init_embed(input)
 
     def _inner(self, input, embeddings, action=None, probing=None, keep_out=None):
-
         # in the case that only inner is called by eval.py function
         #######################################
 
@@ -277,7 +273,6 @@ class AttentionModel(nn.Module):
             if action == None:
                 selected = self._select_node(log_p.exp()[:, 0, :], mask[:, 0, :])
             else:
-
                 selected = action[:, i]
 
             state = state.update(selected)
@@ -325,7 +320,6 @@ class AttentionModel(nn.Module):
         )
 
     def _select_node(self, probs, mask):
-
         assert (probs == probs).all(), "Probs should not contain any nans"
 
         if self.decode_type == "greedy":
@@ -348,7 +342,6 @@ class AttentionModel(nn.Module):
         return selected
 
     def _precompute(self, embeddings, num_steps=1):
-
         # The fixed context projection of the graph embedding is calculated only once for efficiency
         graph_embed = embeddings.mean(1)
         # fixed context = (batch_size, 1, embed_dim) to make broadcastable with parallel timesteps
@@ -387,7 +380,6 @@ class AttentionModel(nn.Module):
         )
 
     def _get_log_p(self, fixed, state, probing=None, keep_out=None, normalize=True):
-
         # Compute query = context node embedding
         query = fixed.context_node_projected + self.project_step_context(
             self._get_parallel_step_context(fixed.node_embeddings, state)
@@ -440,7 +432,6 @@ class AttentionModel(nn.Module):
                     batch_size, 1, self.W_placeholder.size(-1)
                 )
             else:
-
                 if self.tsp:
                     return embeddings.gather(
                         1,
@@ -464,7 +455,6 @@ class AttentionModel(nn.Module):
         )
 
     def _one_to_many_logits(self, query, glimpse_K, glimpse_V, logit_K, mask):
-
         batch_size, num_steps, embed_dim = query.size()
         key_size = val_size = embed_dim // self.n_heads
 
@@ -511,7 +501,6 @@ class AttentionModel(nn.Module):
         return logits, glimpse.squeeze(-2)
 
     def _get_attention_node_data(self, fixed, state):
-
         return fixed.glimpse_key, fixed.glimpse_val, fixed.logit_key
 
     def _make_heads(self, v, num_steps=None):

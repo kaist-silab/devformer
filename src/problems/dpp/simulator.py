@@ -46,7 +46,6 @@ def decap_placement(
 
     for i in range(n * m):
         if i in pi:
-
             if i < probing_port:
                 probe = probe - 1
 
@@ -55,7 +54,6 @@ def decap_placement(
 
 
 def decap_model(z_initial, z_final, N_freq, fpath=DEFAULT_DIR + "freq_201.npy"):
-
     impedance_gap = np.zeros(N_freq)
 
     with open(fpath, "rb") as f:
@@ -70,7 +68,6 @@ def decap_model(z_initial, z_final, N_freq, fpath=DEFAULT_DIR + "freq_201.npy"):
 
 
 def initial_impedance(n, m, raw_pdn, probe):
-
     zout = raw_pdn[:, probe, probe]
 
     return zout
@@ -84,7 +81,6 @@ def decap_sim(
     N_freq=201,
     fpath=DEFAULT_DIR + "10x10_pkg_chip.npy",
 ):
-
     with open(fpath, "rb") as f:
         raw_pdn = np.load(f)
     solution = np.array(solution)

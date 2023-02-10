@@ -40,7 +40,6 @@ def rollout(model, dataset, opts):
     set_decode_type(model, "greedy")
 
     def eval_model_bat(bat):
-
         with torch.no_grad():
             cost, _ = model(move_to(bat, opts.device))
 
@@ -183,7 +182,6 @@ def train_epoch(
     for batch_id, batch in enumerate(
         tqdm(training_dataloader, disable=opts.no_progress_bar)
     ):
-
         if opts.training_mode == "IL":
             train_batch(
                 model,
@@ -233,7 +231,6 @@ def train_epoch(
 
 def symmetric_action(action, opts):
     if opts.problem == "dpp":
-
         # random ordering of placement
         perm = np.random.permutation(opts.K)
         action = action[:, perm]
@@ -264,7 +261,6 @@ def action_aug(action, opts):
 
 
 def train_batch(model, optimizer, baseline, batch, opts, action):
-
     x, bl_val = baseline.unwrap_batch(batch)
 
     x = move_to(x, opts.device)
