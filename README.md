@@ -1,6 +1,6 @@
 <div align="center">
 
-# DPP Benchmark
+# DevFormer
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_red.svg)](https://dppbench.streamlit.app/)![example workflow](https://github.com/kaist-silab/DPPBench/actions/workflows/pytest.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![python_sup](https://img.shields.io/badge/python-3.7+-blue.svg?)](https://www.python.org/downloads/release/python-370/)
 
 <p align="center">
@@ -9,7 +9,7 @@
 
 </div>
 
-This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement". The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
+This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement", accepted at ICML 2023. The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
 
 
 ## Setup
@@ -102,5 +102,7 @@ If you find this repository useful, please consider citing our paper:
   title={DevFormer: A Symmetric Transformer for Context-Aware Device Placement},
   author={Kim, Haeyeon and Kim, Minsu and Berto, Federico and Kim, Joungho and Park, Jinkyoo},
   year={2023},
+  booktitle={International Conference on Machine Learning},
+  organization={PMLR}
 }
 ```
