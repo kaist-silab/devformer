@@ -11,6 +11,7 @@
 
 This repository contains the benchmark for the decoupling capacitor placement problem (DPP) and the accompanying paper "DevFormer: A Symmetric Transformer for Context-Aware Device Placement", accepted at ICML 2023. The benchmark is designed to evaluate the performance of the proposed DevFormer architecture and to facilitate future research in hardware design optimization.
 
+> The DPP and its multi-port variants are now available as environments in [RL4CO](https://github.com/kaist-silab/rl4co)! 🚀
 
 ## Setup
 
